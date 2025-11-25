@@ -1,0 +1,159 @@
+# ========================================
+# Global configuration for models/datasets
+# Supports 3-level override priority:
+#   1) model_dataset_override   (highest)
+#   2) dataset defaults
+#   3) model defaults           (lowest)
+# ========================================
+
+models:
+  DeepSeek-R1-Qwen-7B:
+    path: "/your_path/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+    max_len: 16384
+    sample_num: 8
+    temperature: 1.0
+    tensor_parallel_size: 1
+    system1_temperature: 0.5
+
+  DeepSeek-R1-Distill-Llama-8B:
+    path: "/your_path/deepseek-ai/DeepSeek-R1-Distill-Llama-8B"
+    max_len: 16384
+    sample_num: 8
+    temperature: 1.0
+    tensor_parallel_size: 1
+    system1_temperature: 0.5
+
+  Qwen3-4B-thinking:
+    path: "/your_path/Qwen/Qwen3-4B"
+    max_len: 16384
+    sample_num: 8
+    temperature: 1.0
+    tensor_parallel_size: 1
+    mode: 'thinking'
+    system1_temperature: 1.0
+
+  Qwen3-4B-nothinking:
+    path: "/your_path/Qwen/Qwen3-4B"
+    max_len: 16384
+    sample_num: 8
+    temperature: 1.0
+    tensor_parallel_size: 1
+    mode: 'nothinking'
+    system1_temperature: 1.0
+
+
+datasets:
+
+  math500:
+    path: "dataset/math500.jsonl"
+
+  aime2024:
+    path: "dataset/aime2024.jsonl"
+
+  aime2025:
+    path: "dataset/aime2025.jsonl"
+
+  amc23:
+    path: "dataset/amc23.jsonl"
+
+  gpqa:
+    path: "dataset/GPQA_Diamond_shuffle.jsonl"
+
+
+# ========================================
+# Model × Dataset overrides
+# Only specify special rules here when the
+# default model/dataset values do NOT apply.
+# ========================================
+model_dataset_override:
+
+  DeepSeek-R1-Qwen-7B:
+    math500:
+      max_len: 10240     
+      sample_num: 8 
+    
+    aime2024:
+      max_len: 16384     
+      sample_num: 32
+    
+    aime2025:
+      max_len: 16384     
+      sample_num: 32
+    
+    amc23:
+      max_len: 10240     
+      sample_num: 8
+
+    gpqa:
+      max_len: 16384     
+      sample_num: 16
+
+
+  DeepSeek-R1-Distill-Llama-8B:
+    math500:
+      max_len: 10240     
+      sample_num: 8 
+    
+    aime2024:
+      max_len: 16384     
+      sample_num: 32
+    
+    aime2025:
+      max_len: 16384     
+      sample_num: 32
+    
+    amc23:
+      max_len: 10240     
+      sample_num: 8
+
+    gpqa:
+      max_len: 16384     
+      sample_num: 8
+
+
+  Qwen3-4B-thinking:
+    math500:
+      max_len: 10240     
+      sample_num: 8 
+    
+    aime2024:
+      max_len: 16384     
+      sample_num: 16
+    
+    aime2025:
+      max_len: 16384     
+      sample_num: 16
+    
+    amc23:
+      max_len: 10240     
+      sample_num: 8
+
+    gpqa:
+      max_len: 16384     
+      sample_num: 
+      
+
+  Qwen3-4B-nothinking:
+    math500:
+      max_len: 8192     
+      sample_num: 8 
+    
+    aime2024:
+      max_len: 8192     
+      sample_num: 32
+    
+    aime2025:
+      max_len: 8192     
+      sample_num: 16
+    
+    amc23:
+      max_len: 8192     
+      sample_num: 8
+
+    gpqa:
+      max_len: 8192     
+      sample_num: 16
+
+
+
+
