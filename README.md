@@ -29,9 +29,8 @@ Existing dynamic methods often suffer from high latency due to sequential reques
 ### 1. Installation
 
 ```bash
-git clone [https://github.com/noforit/SeerSC.git](https://github.com/noforit/SeerSC.git)
+git clone https://github.com/noforit/SeerSC.git
 cd SeerSC
-# Install dependencies
 pip install -r requirements.txt
 ```
 
